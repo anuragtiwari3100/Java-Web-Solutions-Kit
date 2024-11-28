@@ -1,0 +1,5 @@
+127.0.0.1 - - [22/Nov/2024:23:27:41 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [22/Nov/2024:23:27:54 +0530] "GET /redirectToAnotherJspHtml/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Nov/2024:23:27:54 +0530] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [22/Nov/2024:23:27:59 +0530] "POST /redirectToAnotherJspHtml/Register HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [22/Nov/2024:23:27:59 +0530] "GET /redirectToAnotherJspHtml/success.jsp HTTP/1.1" 200 167

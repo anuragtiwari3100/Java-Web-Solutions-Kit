@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Failure</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #ffebeb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+    }
+
+    .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 30px 40px;
+        text-align: center;
+        max-width: 500px;
+        width: 90%;
+    }
+
+    h1 {
+        color: #e63946;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    marquee {
+        font-size: 20px;
+        color: #e63946;
+        font-weight: bold;
+    }
+
+    h2 {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #555;
+    }
+
+    p {
+        font-size: 14px;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1><marquee>Registration Failed</marquee></h1>
+        <% 
+            String name = (String) session.getAttribute("name");
+        %>
+        <h2>Hey <%= name %>, You failed to Register to this Web Application</h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Model {
+	private String uname;
+	private String upassword;
+	private String email;
+    private String ucity;
+	private Connection connect=null;
+	private PreparedStatement pstm=null;
+	int rowAffected;
+	  
+	public String getUname() {
+		return uname;
+	}
+	
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	
+	public void setUpassword(String upassword) {
+		this.upassword = upassword;
+	}
+
+	public String getUpassword() {
+		return upassword;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getUcity() {
+		return ucity;
+	}
+	
+	public void setUcity(String ucity) {
+		this.ucity = ucity;
+	}
+	  
+	public int register(){
+	try {
+		connect =	JDBCUtill.getDbConnection();
+		String sql ="INSERT INTO apnaInfo (uname,email,upassword, ucity) VALUES(?,?,?,?)";
+		pstm=connect.prepareStatement(sql);
+		pstm.setString(1,uname);
+		pstm.setString(2, email);
+		pstm.setString(3, upassword);
+		pstm.setString(4, ucity);
+		rowAffected =pstm.executeUpdate();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			JDBCUtill.closeResource(connect, pstm);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return rowAffected;
+	}
+	  
+	
+}

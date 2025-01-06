@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;RegistrationAppUsingJsp&apos; to &apos;RegistrationAppUsingMVC&apos;" description="Rename resource &apos;RegistrationAppUsingJsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/RegistrationAppUsingJsp" name="RegistrationAppUsingMVC" stamp="1732763556992" updateReferences="true"/>
-</session>

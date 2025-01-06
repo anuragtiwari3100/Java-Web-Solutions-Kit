@@ -26,7 +26,7 @@ public class LaunchApp1 {
      int rowAffected= statement.executeUpdate(sql); 
       
       //process the result
-      if(rowAffected ==0) {
+      if(rowAffected ==0) {   
     	    System.out.println("Unable to insert data");
       }else {
     	  System.out.println("Data inserted Sucessfully!!!");

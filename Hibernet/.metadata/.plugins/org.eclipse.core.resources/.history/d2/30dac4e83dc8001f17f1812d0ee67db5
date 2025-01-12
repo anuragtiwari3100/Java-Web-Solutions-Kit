@@ -1,0 +1,57 @@
+package com.telsko.DAO_DataAccessObject;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import com.telusko.Entity.Student;
+
+public class PerofmingInsertion {
+
+
+
+	public static void main(String[] args) {
+		System.out.println("Staring the actual applocation");
+	    Configuration cfg = null;
+	    SessionFactory Factory = null;
+	    Session session = null;
+	    Transaction   transaction = null;
+	    boolean  transactionDone = false;
+	    Student st= null;
+	    
+	    
+	    cfg = new Configuration();
+	    cfg.addAnnotatedClass(Student.class);
+	    Factory = cfg.buildSessionFactory();
+	   session =Factory.openSession();
+	   
+	    st = new Student();
+//	    st.setId(181);   because we have use @GeneraedValue in the Model(Student) class id will be auto assign
+	    st.setName("Sami");
+	    st.setCity("India");
+	    
+	   
+	    try {
+	         
+	    	transaction =session.beginTransaction();
+	    	session.persist(st);
+	    	transactionDone = true;
+	    	
+	    }catch(HibernateException ex){
+	    	
+	    	
+	    }catch(Exception ex) {
+            ex.printStackTrace();	    	
+	    }finally {
+	        if(transactionDone == true) {
+	        	transaction.commit();
+	        }else {
+	        	transaction.rollback();
+	        }
+	       session.close();
+	       Factory.close();
+	    }
+	}
+
+}

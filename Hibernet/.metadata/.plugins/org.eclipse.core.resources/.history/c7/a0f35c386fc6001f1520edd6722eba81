@@ -1,0 +1,5 @@
+package com.telusko.Entity;
+
+public class Student {
+
+}

@@ -1,0 +1,14 @@
+package tiwari.com.MavProject;
+
+import java.lang.module.Configuration;
+
+import com.mysql.cj.xdevapi.SessionFactory;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Applcation is   started..." );
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+    }
+}

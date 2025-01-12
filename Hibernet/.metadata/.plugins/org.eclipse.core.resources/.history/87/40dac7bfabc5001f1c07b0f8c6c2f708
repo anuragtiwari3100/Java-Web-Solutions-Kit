@@ -1,0 +1,20 @@
+package tiwari.com.MavProject;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Application is started...");
+
+        // Create Configuration instance and configure Hibernate
+        Configuration cfg = new Configuration();
+        cfg.configure("tiwari/com/MavProject/hibernate.cfg.xml");
+
+        // Build the SessionFactory
+        SessionFactory Factory = cfg.buildSessionFactory();
+
+        System.out.println("Hibernate SessionFactory created successfully!"+Factory);
+        System.out.println(Factory.isClosed());
+    }
+}

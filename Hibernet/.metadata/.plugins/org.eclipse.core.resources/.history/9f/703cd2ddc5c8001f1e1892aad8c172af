@@ -1,0 +1,11 @@
+package com.telusko.Model;
+
+public class Answer {
+
+	public Answer() {
+		// TODO Auto-generated constructor stub
+	}
+	private Integer id;
+	private String answer;
+
+}

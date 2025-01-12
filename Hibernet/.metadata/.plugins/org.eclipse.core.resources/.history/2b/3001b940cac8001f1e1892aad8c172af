@@ -1,0 +1,35 @@
+package com.telusko.Model;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Answer {
+
+
+	private Integer id;
+	
+	private String answer;
+	
+	public Answer() {
+    System.out.println("Zero param Constructor of Anser");
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+	@Override
+	public String toString() {
+		return "Answer [id=" + id + ", answer=" + answer + "]";
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.telsko.DAO_DataAccessObject;
+
+public class secondActual {
+
+	public secondActual() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

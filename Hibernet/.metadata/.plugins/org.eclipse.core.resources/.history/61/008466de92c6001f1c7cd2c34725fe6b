@@ -1,0 +1,51 @@
+package com.telsko.DAO_DataAccessObject;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.telusko.Entity.Student;
+
+public class LaunchUpdate {
+
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) {
+		
+		System.out.println("Staring the actual applocation");
+	      SessionFactory sessionFactory= new Configuration().configure().addAnnotatedClass(Student.class).buildSessionFactory();
+	        Session session = null;
+	        boolean transaction_Done = false;
+	        Transaction  transaction = null;
+	        try {
+	        	session = sessionFactory.openSession();
+	        	transaction = session.beginTransaction();
+	        	Student st = new Student();
+	        	st.setId(101);
+	        	st.setCity("Jaipur;
+	        	st.setName("Samikha kumar");
+//	        	session.update(st);
+	        	session.saveOrUpdate(st);
+	        	transaction_Done = true;
+	        	
+	        }catch(HibernateException ex) {
+	        	
+	        }catch(Exception ex) {
+	        	ex.printStackTrace();
+	        }
+	        finally {
+	        	if(transaction_Done == true) {
+	        		transaction.commit();
+	        		
+	        	}else {
+	        		transaction.rollback();
+	        		
+	        	}
+	        	session.close();
+	        	sessionFactory.close();
+	        }
+	}
+
+}

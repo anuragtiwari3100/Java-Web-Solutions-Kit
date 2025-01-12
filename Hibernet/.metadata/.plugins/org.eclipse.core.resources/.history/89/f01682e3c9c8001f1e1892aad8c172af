@@ -1,0 +1,75 @@
+package com.telsko.DAO_DataAccessObject;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.telusko.Model.Answer;
+import com.telusko.Model.Question;
+
+public class PerofmingInsertion {
+
+
+
+	public static void main(String[] args) {
+		System.out.println("Staring the actual applocation");
+	    Configuration cfg = null;
+	    SessionFactory Factory = null;
+	    Session session = null;
+	    Transaction   transaction = null;
+	    Question q1 = null;
+	    Answer ans1 = null;
+	    Question q2 = null;
+	    Answer ans2 = null;
+	    boolean  transactionDone = false;
+
+	    
+	    
+	    cfg = new Configuration();
+	    cfg.addAnnotatedClass(Question.class);
+	    Factory = cfg.buildSessionFactory();
+	   session =Factory.openSession();
+	   
+	   
+	     q1 = new Question();
+        q1.setId(1);
+        q1.setQuestion("What is Hibernate");
+	    
+        ans1 = new Answer();
+         ans1.setId(2);
+         ans1.setAnswer("it is an ORM tool");
+	   
+	     q2 = new Question();
+	        q2.setId(2);
+	        q2.setQuestion("What is JPA");
+		    
+	        ans2 = new Answer();
+	         ans2.setId(2);
+	         ans2.setAnswer(" a specification that allows Java applications to persist and retrieve data from a non-volatile storage system");
+		   
+         
+	    try {
+	         
+	    	transaction =session.beginTransaction();
+	    	session.persist(q1);
+	    	transactionDone = true;
+	    	
+	    }catch(HibernateException ex){
+	    	
+	    	
+	    }catch(Exception ex) {
+            ex.printStackTrace();	    	
+	    }finally {
+	        if(transactionDone == true) {
+	        	transaction.commit();
+	        }else {
+	        	transaction.rollback();
+	        }
+	       session.close();
+	       Factory.close();
+	    }
+	}
+
+}

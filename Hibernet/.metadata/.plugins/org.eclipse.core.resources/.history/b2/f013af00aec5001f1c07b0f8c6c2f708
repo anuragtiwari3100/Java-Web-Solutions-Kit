@@ -1,0 +1,15 @@
+package   tiwari.com.MavProject;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+
+public class App{
+	public static void main(String[] args) {
+		 System.out.println("App is started..");
+		  Configuration cfg = new Configuration();
+		  cfg.configure("hibernate.cfg.xml");
+		  SessionFactory Factory = cfg.buildSessionFactory();
+		  
+	}
+}

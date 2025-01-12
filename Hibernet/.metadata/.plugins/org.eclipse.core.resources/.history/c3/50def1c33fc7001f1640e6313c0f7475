@@ -1,0 +1,13 @@
+package com.telisko.app;
+
+public class LaunchSelective {
+
+	public LaunchSelective() {
+
+	}
+
+	public static void main(String[] args) {
+		
+	}
+
+}

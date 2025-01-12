@@ -1,0 +1,70 @@
+package com.telisko.app;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.telisko.model.Employee;
+
+
+public class LaunchSelective {
+
+	public LaunchSelective() {
+      
+	}
+
+	public static void main(String[] args) {
+		Session session = null;
+	  Transaction transaction = null;
+	  boolean transaction_done= false;
+		
+/*
+    	 SessionFactory sessionFactory = new Configuration().configure().
+			 addAnnotatedClass(Employee.class).buildSessionFactory();
+ */
+	 
+		//Step.1  create Configuration
+		Configuration cfg = new Configuration();
+		
+		//step2. Configure Hibernate Setting
+		cfg.configure("hibernate.cfg.xml");
+		
+		//step3. Adding annotaed class  == entity class
+		cfg.addAnnotatedClass(Employee.class);
+		
+		//creating the session factory
+	SessionFactory	sessionFactory = cfg.buildSessionFactory();
+	
+	//step4. Creating the session
+	 session = sessionFactory.openSession();
+	 
+	 try {
+		   session = sessionFactory.openSession();
+		   transaction = session.beginTransaction();
+		   Employee e = new Employee();
+		      e.seteName("Anurag");
+		      e.setEage(21);
+		      e.setEcity("Gopalganj");
+		      e.setEid(3100);
+		     session.persist(e);
+		    transaction_done = true;
+		 
+	 }catch(HibernateException e) {
+		  System.out.println (e);
+	 }catch(Exception e) {
+		 e.printStackTrace();
+	 }
+	   finally {
+	     if(transaction_done == true) {
+	    	 transaction.commit();
+	     }else {
+	    	 transaction.rollback();
+	     }
+	   }
+	    session.close();
+	     sessionFactory.close();
+	}
+
+}

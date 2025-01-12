@@ -1,0 +1,9 @@
+package com.telsko.DAO_DataAccessObject;
+
+public class performingDelOperation {
+
+	public performingDelOperation() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

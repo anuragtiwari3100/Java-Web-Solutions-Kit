@@ -1,0 +1,14 @@
+package com.telsko.DAO_DataAccessObject;
+
+public class ActualApplication {
+
+	public ActualApplication() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

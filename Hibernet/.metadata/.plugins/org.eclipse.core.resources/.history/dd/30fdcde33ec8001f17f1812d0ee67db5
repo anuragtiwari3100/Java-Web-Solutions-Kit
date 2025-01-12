@@ -1,0 +1,8 @@
+hibernate.connection.driver_class =com.mysql.cj.jdbc.Driver
+hibernate.connection.url =jdbc:mysql://localhost:3306/thrdDb
+hibernate.connection.username =root
+hibernate.connection.password=abhishek@2002
+hibernate.dialect =org.hibernate.dialect.MySQLDialect
+hibernate.hbm2ddl.auto =create
+hibernate.show_sql =true
+hibernate.formate_sql =true

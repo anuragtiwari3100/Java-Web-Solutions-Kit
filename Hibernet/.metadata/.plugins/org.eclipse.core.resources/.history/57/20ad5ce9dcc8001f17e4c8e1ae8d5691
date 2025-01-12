@@ -1,0 +1,71 @@
+package com.telsko.DAO_DataAccessObject;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.telusko.Model.Answer;
+import com.telusko.Model.Question;
+
+public class PerofmingInsertion {
+
+    public static void main(String[] args) {
+        System.out.println("Starting the actual application");
+        Configuration cfg = null;
+        SessionFactory Factory = null;
+        Session session = null;
+        Transaction transaction = null;
+        Question q1 = null;
+        Answer ans1 = null;
+        Question q2 = null;
+        Answer ans2 = null;
+        boolean transactionDone = false;
+
+        cfg = new Configuration();
+        cfg.configure("hibernate.cfg.xml");
+        Factory = cfg.buildSessionFactory();
+        session = Factory.openSession();
+
+        q1 = new Question();
+        q1.setId(3);
+        q1.setQuestion("What is your Name");
+
+        ans1 = new Answer();
+        ans1.setId(3);
+        ans1.setAnswer("Anurag");
+
+        q1.setAnswer(ans1);  // Setting the Answer object for the Question
+
+        q2 = new Question();
+        q2.setId(4);
+        q2.setQuestion("You are from ..");
+
+        ans2 = new Answer();
+        ans2.setId(4); // Use a different ID for the second Answer
+//        ans2.setAnswer("A specification that allows Java applications to persist and retrieve data from a non-volatile storage system");
+        ans2.setAnswer("Bihar");
+        q2.setAnswer(ans2);  // Setting the Answer object for the Question
+
+        try {
+            transaction = session.beginTransaction();
+            session.persist(q1);  // Persisting Question, Answer will be cascaded
+            session.persist(q2);  // Persisting Question, Answer will be cascaded
+            transactionDone = true;
+
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (transactionDone) {
+                transaction.commit();
+            } else {
+                transaction.rollback();
+            }
+            session.close();
+            Factory.close();
+        }
+    }
+}

@@ -1,0 +1,23 @@
+package com.telsko.DAO_DataAccessObject;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class secondActual {
+
+	public static void main(String[] args) {
+		System.out.println("Engine file");
+		Configuration  cfg = null;
+//		cfg.configure();
+        SessionFactory factory = null;
+        Session  session =null;
+        Transaction transaction = null;
+        
+          transaction.commit();
+          session.close();
+		
+	} 
+
+}

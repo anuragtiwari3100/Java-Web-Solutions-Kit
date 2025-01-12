@@ -1,0 +1,34 @@
+package com.telsko.DAO_DataAccessObject;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import com.telusko.Entity.Student;
+
+public class ActualApplication {
+
+	public ActualApplication() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Staring the actual applocation");
+		
+		 Configuration  cfg = new Configuration();
+		  cfg.configure();
+		  SessionFactory Factory =cfg.buildSessionFactory();
+		  Session session = Factory.openSession();
+		  Transaction  transaction = session.beginTransaction();
+		  
+		  Student st = new Student();
+		  st.setName("Anurag");
+          st.setId(3100);
+          st.setCity("Gopalganj");
+          
+          session.save(st);
+		  transaction.commit();
+		  session.clear();
+	}
+
+}
